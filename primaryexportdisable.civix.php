@@ -79,6 +79,13 @@ class CRM_Primaryexportdisable_ExtensionUtil {
 
 use CRM_Primaryexportdisable_ExtensionUtil as E;
 
+function _primaryexportdisable_civix_mixin_polyfill() {
+  if (!class_exists('CRM_Extension_MixInfo')) {
+    $polyfill = __DIR__ . '/mixin/polyfill.php';
+    (require $polyfill)(E::LONG_NAME, E::SHORT_NAME, E::path());
+  }
+}
+
 /**
  * (Delegated) Implements hook_civicrm_config().
  *
